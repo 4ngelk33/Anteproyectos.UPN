@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Experiencias - Universidad Pedagógica Nacional</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
+  <!-- AOS Animation Library -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    body { font-family: 'Segoe UI', sans-serif; }
+        .navbar-brand img {
+      height: 40px;
+      width: auto;
+      margin-right: 8px;
+    }
+    .hero {
+      position: relative;
+      background-image: url("https://cienciaytecnologia.upn.edu.co/wp-content/uploads/2023/04/WhatsApp-Image-2023-04-19-at-9.46.57-AM.jpeg");
+      background-size: cover;
+      background-position: center;
+      height: 50vh;
+      display: flex;
+      align-items: center;
+      color: white;
+      padding: 0 20px;
+    }
+
+    h1 {
+      margin-left: 500px;
+      font-size: 70px;
+      text-align: center;
+      font-family: 'Bebas Neue', sans-serif;
+      white-space: nowrap;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1;
+    }
+
+    .hero-content-left {
+      position: relative;
+      z-index: 2;
+      max-width: 50%;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      justify-items: center;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
+    }
+
+    .flip-card {
+      background-color: transparent;
+      width: 300px;
+      height: 500px;
+      perspective: 1000px;
+    }
+
+    .flip-card-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.7s;
+      transform-style: preserve-3d;
+    }
+
+    .flip-card:hover .flip-card-inner {
+      transform: rotateY(180deg);
+    }
+
+    .flip-card-front, .flip-card-back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+    }
+
+    .flip-card-front {
+      background-size: cover;
+      background-position: center;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 1rem;
+    }
+
+    .flip-card-front h3 {
+      margin: 0;
+      font-size: 1.2rem;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 0.5rem;
+      border-radius: 8px;
+    }
+
+    .flip-card-back {
+      background-color: #fff;
+      color: #333;
+      transform: rotateY(180deg);
+      padding: 1rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      text-align: center;
+    }
+
+    .flip-card-back img {
+      max-height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 10px;
+    }
+
+    .flip-card-back p {
+      font-size: 0.9rem;
+      margin: 0.5rem 0;
+    }
+
+    .flip-card-back strong {
+      color: #003467;
+    }
+
+    .button-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      width: 100%;
+    }
+
+    .flip-card-back a {
+      text-align: center;
+      text-decoration: none;
+      background-color: 003467;
+      color: #fff;
+      padding: 0.5rem;
+      border-radius: 6px;
+      font-size: 0.85rem;
+      transition: background-color 0.3s;
+    }
+
+    .flip-card-back a:hover {
+      background-color: #003467;
+    }
+
+
+@media (max-width: 768px) {
+  .carousel-caption {
+    right: 10px !important;      /* Deja espacio a la derecha */
+    left: 10px !important;       /* Deja espacio a la izquierda */
+    width: auto !important;      /* Que tome ancho automático */
+    white-space: normal !important;  /* Permitir salto de línea */
+    font-size: 1.5rem !important; /* Ajusta tamaño para móvil */
+    overflow-wrap: break-word;   /* Que no se corte texto largo */
+  }
+}
+@media (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 1fr !important;
+  }
+  .flip-card {
+    width: 100%;
+  }
+}
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container">
+      <a class="navbar-brand d-flex align-items-center" href="#">
+        <img src="Logo.png" alt="Logo">
+        Universidad Pedagogica Nacional
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="Paginaprincipal.html">Inicio</a> <!-- Redirige a la página de inicio -->
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="participantes.html">Experiencias</a> <!-- Redirige a la página de participantes -->
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="experiencia.html">Participantes</a> <!-- Redirige a la página de experiencias -->
+                </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+<!-- Hero / Banner -->
+<section class="hero">
+  <div class="overlay"></div>
+  <div class="hero-content-left">
+    <h1 data-aos="fade-up" data-aos-duration="1500">PARTICIPANTES</h1>
+  </div>
+</section>
+
+<!-- Tarjetas -->
+<div class="grid-container">
+
+  <!-- Ejemplo de tarjeta -->
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front" style="background-image: url('https://www.fundacionmapfre.org/media/blog/educacion-para-todos-1194x585-1.jpg');">
+        <h3>Videojuegos y Discapacidad</h3>
+      </div>
+      <div class="flip-card-back">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Jonathan_Ive_%28OTRS%29.jpg" alt="Foto de Karol Vanessa Ramos">
+        <div>
+          <p><strong>Proyecto:</strong> Videojuegos como herramienta educativa</p>
+          <p><strong>Autora:</strong> Karol Vanessa Ramos Rodríguez</p>
+          <p>Videojuegos como recurso para la inclusión educativa de personas con discapacidad intelectual.</p>
+        </div>
+        <div class="button-group">
+          <a href="enlace-anteproyecto2.pdf" target="_blank">Conoce más del anteproyecto</a>
+          <a href="cv-karol.pdf" target="_blank">Ver CV</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front" style="background-image: url('https://colegiosadec.org/app/wp-content/uploads/2021/03/educacion-integral-y-personalizada.png');">
+        <h3>Videojuegos y Discapacidad</h3>
+      </div>
+      <div class="flip-card-back">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Jonathan_Ive_%28OTRS%29.jpg" alt="Foto de Karol Vanessa Ramos">
+        <div>
+          <p><strong>Proyecto:</strong> Videojuegos como herramienta educativa</p>
+          <p><strong>Autora:</strong> Karol Vanessa Ramos Rodríguez</p>
+          <p>Videojuegos como recurso para la inclusión educativa de personas con discapacidad intelectual.</p>
+        </div>
+        <div class="button-group">
+          <a href="enlace-anteproyecto2.pdf" target="_blank">Conoce más del anteproyecto</a>
+          <a href="cv-karol.pdf" target="_blank">Ver CV</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front" style="background-image: url('https://img.freepik.com/foto-gratis/ninos-tiro-medio-que-pasan-tiempo-escuela_23-2150385343.jpg');">
+        <h3>Videojuegos y Discapacidad</h3>
+      </div>
+      <div class="flip-card-back">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Jonathan_Ive_%28OTRS%29.jpg" alt="Foto de Karol Vanessa Ramos">
+        <div>
+          <p><strong>Proyecto:</strong> Videojuegos como herramienta educativa</p>
+          <p><strong>Autora:</strong> Karol Vanessa Ramos Rodríguez</p>
+          <p>Videojuegos como recurso para la inclusión educativa de personas con discapacidad intelectual.</p>
+        </div>
+        <div class="button-group">
+          <a href="enlace-anteproyecto2.pdf" target="_blank">Conoce más del anteproyecto</a>
+          <a href="cv-karol.pdf" target="_blank">Ver CV</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front" style="background-image: url('https://media.licdn.com/dms/image/v2/D5612AQFr_Jx-ICFwTQ/article-cover_image-shrink_600_2000/article-cover_image-shrink_600_2000/0/1726630801749?e=2147483647&v=beta&t=EAXOnir62MmL_9IamnUCgVuvnloTp48NCJYg3PsHJb4');">
+        <h3>Videojuegos y Discapacidad</h3>
+      </div>
+      <div class="flip-card-back">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Jonathan_Ive_%28OTRS%29.jpg" alt="Foto de Karol Vanessa Ramos">
+        <div>
+          <p><strong>Proyecto:</strong> Videojuegos como herramienta educativa</p>
+          <p><strong>Autora:</strong> Karol Vanessa Ramos Rodríguez</p>
+          <p>Videojuegos como recurso para la inclusión educativa de personas con discapacidad intelectual.</p>
+        </div>
+        <div class="button-group">
+          <a href="enlace-anteproyecto2.pdf" target="_blank">Conoce más del anteproyecto</a>
+          <a href="cv-karol.pdf" target="_blank">Ver CV</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front" style="background-image: url('https://mexico.unir.net/wp-content/uploads/sites/6/2023/03/estrategias-didactivas-educacion.jpg');">
+        <h3>Videojuegos y Discapacidad</h3>
+      </div>
+      <div class="flip-card-back">
+        <div>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/7/7d/Jonathan_Ive_%28OTRS%29.jpg" alt="Foto de Karol Vanessa Ramos">
+          <p><strong>Proyecto:</strong> Videojuegos como herramienta educativa</p>
+          <p><strong>Autora:</strong> Karol Vanessa Ramos Rodríguez</p>
+          <p>Videojuegos como recurso para la inclusión educativa de personas con discapacidad intelectual.</p>
+        </div>
+        <div class="button-group">
+          <a href="enlace-anteproyecto2.pdf" target="_blank">Conoce más del anteproyecto</a>
+          <a href="cv-karol.pdf" target="_blank">Ver CV</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="flip-card">
+    <div class="flip-card-inner">
+      <div class="flip-card-front" style="background-image: url('https://camaradecomercioempresarial.org/wp-content/uploads/2021/08/educaion-inicial-y-especial-2-870x440.jpg');">
+        <h3>Videojuegos y Discapacidad</h3>
+      </div>
+      <div class="flip-card-back">
+        <img src="https://m.media-amazon.com/images/M/MV5BMTQ1MTY2MTY2Nl5BMl5BanBnXkFtZTcwMDg1ODYwNA@@._V1_.jpg" alt="Foto de Karol Vanessa Ramos">
+        <div>
+          <p><strong>Proyecto:</strong> Videojuegos como herramienta educativa</p>
+          <p><strong>Autora:</strong> Karol Vanessa Ramos Rodríguez</p>
+          <p>Videojuegos como recurso para la inclusión educativa de personas con discapacidad intelectual.</p>
+        </div>
+        <div class="button-group">
+          <a href="enlace-anteproyecto2.pdf" target="_blank">Conoce más del anteproyecto</a>
+          <a href="cv-karol.pdf" target="_blank">Ver CV</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Puedes duplicar el bloque anterior para más participantes -->
+  
+</div>
+
+<!-- Footer / Términos -->
+<section class="terms-conditions bg-primary text-white py-3">
+  <div class="container text-center">
+    <p class="mb-0">© 2025 Todos los derechos reservados. <a href="/terminos-y-condiciones" class="text-white">Términos y Condiciones</a></p>
+  </div>
+</section>
+
+<!-- Scripts -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+
+</body>
+</html>
+
